@@ -58,7 +58,7 @@ export default function ContactPage() {
       {/* Contact section */}
       <section className="section-pad" style={{ background: 'var(--color-prime-cream)' }}>
         <FadeUp className="container-prime" delay={100}>
-          <style>{`@media(min-width:1024px){:root{--contact-cols:1fr 2fr;--contact-gap:40px}}`}</style>
+          <style>{`@media(min-width:1024px){:root{--contact-cols:minmax(0,1fr) minmax(0,2fr);--contact-gap:40px}}`}</style>
           <div style={{ display: 'grid', gridTemplateColumns: 'var(--contact-cols, 1fr)', gap: 'var(--contact-gap, 40px)' }}>
             {/* Info sidebar */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -146,7 +146,7 @@ export default function ContactPage() {
                       Fill in the form below and we&apos;ll get back to you as soon as possible — usually within one working day.
                     </p>
                     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                      <style>{`@media(min-width:768px){:root{--form-cols:1fr 1fr;--form-gap:20px}}`}</style>
+                      <style>{`@media(min-width:768px){:root{--form-cols:minmax(0,1fr) minmax(0,1fr);--form-gap:20px}}`}</style>
                       <div style={{ display: 'grid', gridTemplateColumns: 'var(--form-cols, 1fr)', gap: 'var(--form-gap, 20px)' }}>
                         <div>
                           <label className="form-label" htmlFor="contact-name">Full Name *</label>

@@ -384,7 +384,7 @@ export default function DementiaPage() {
               </div>
             ))}
           </div>
-        </FadeUp>
+        </div>
       </section>
 
       {/* ── STAGES ─────────────────────────────────────────────────── */}
@@ -521,7 +521,7 @@ export default function DementiaPage() {
               </div>
             ))}
           </div>
-        </FadeUp>
+        </div>
       </section>
 
       {/* ── NATIONAL DEMENTIA STRATEGY ─────────────────────────────── */}
@@ -722,7 +722,7 @@ export default function DementiaPage() {
               </p>
             </div>
           </div>
-        </FadeUp>
+        </div>
       </section>
 
       {/* ── PERSONALISED CARE PLANS ────────────────────────────────── */}
@@ -849,7 +849,7 @@ export default function DementiaPage() {
               </div>
             </div>
           </div>
-        </FadeUp>
+        </div>
       </section>
 
       {/* ── FOOD & HEALTHCARE ──────────────────────────────────────── */}
@@ -979,7 +979,7 @@ export default function DementiaPage() {
               />
             </div>
           </div>
-        </FadeUp>
+        </div>
       </section>
 
       {/* ── OUR HOMES ──────────────────────────────────────────────── */}
@@ -1129,7 +1129,7 @@ export default function DementiaPage() {
               </div>
             ))}
           </div>
-        </FadeUp>
+        </div>
       </section>
 
       {/* ── CTA ────────────────────────────────────────────────────── */}
@@ -1258,6 +1258,8 @@ export default function DementiaPage() {
                 e.currentTarget.style.background = "transparent";
               }}
             >
+              <Phone size={15} /> Call Us
+            </a>
           </div>
         </FadeUp>
       </section>

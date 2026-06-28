@@ -443,7 +443,6 @@ export default function KnowledgeHubPage() {
             >
               <BookOpenText size={18} />
             </div>
-            </div>
           </FadeUp>
         </section>
 

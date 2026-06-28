@@ -919,6 +919,8 @@ export default function PayingForCarePage() {
                 e.currentTarget.style.background = "transparent";
               }}
             >
+              <Phone size={15} /> Call Us
+            </a>
           </div>
         </FadeUp>
       </section>
