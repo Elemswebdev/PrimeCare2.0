@@ -35,21 +35,21 @@ export default function ContactPage() {
     <>
       {/* Hero */}
       <section
-        className="relative min-h-80 flex items-end overflow-hidden"
+        className="relative min-h-[400px] flex items-center justify-center overflow-hidden"
         style={{ paddingTop: '4.5rem', background: 'linear-gradient(135deg, #083D3A 0%, #0D5450 100%)' }}
       >
         <div className="absolute inset-0 opacity-10 bg-dots" />
-        <FadeUp className="container-prime relative z-10 py-16">
-          <nav className="breadcrumb mb-6" aria-label="Breadcrumb">
+        <FadeUp className="container-prime relative z-10 py-16 flex flex-col items-center text-center">
+          <nav className="breadcrumb mb-6" style={{ justifyContent: 'center' }} aria-label="Breadcrumb">
             <Link href="/">Home</Link>
             <span>/</span>
             <span style={{ color: '#28B2A1' }}>Contact Us</span>
           </nav>
           <div className="section-label mb-4" style={{ color: '#45C9B8' }}>Get in Touch</div>
-          <h1 className="text-display-lg text-white mt-2" style={{ maxWidth: '600px' }}>
+          <h1 className="text-display-lg text-white mt-2 mx-auto" style={{ maxWidth: '600px' }}>
             We&apos;d love to<br /><span className="italic" style={{ color: '#28B2A1' }}>hear from you</span>
           </h1>
-          <p className="mt-4 text-lg max-w-xl" style={{ color: 'rgba(255,255,255,0.75)' }}>
+          <p className="mt-4 text-lg max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.75)' }}>
             Whether you want to arrange a visit, ask about care options, or simply have a chat, our friendly team is here to help.
           </p>
         </FadeUp>
