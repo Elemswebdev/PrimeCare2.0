@@ -128,12 +128,19 @@ export default function CareersPage() {
     <>
       {/* ─── HERO ─────────────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden"
-        style={{ paddingTop: '4.5rem', minHeight: '65vh', display: 'flex', alignItems: 'flex-end' }}
+        style={{ 
+          position: 'relative',
+          overflow: 'hidden',
+          paddingTop: '4.5rem', 
+          minHeight: '65vh', 
+          display: 'flex', 
+          alignItems: 'center' 
+        }}
       >
         <div
-          className="absolute inset-0"
           style={{
+            position: 'absolute',
+            inset: 0,
             backgroundImage:
               'url(https://www.primecaregroup.co.uk/wp-content/uploads/2021/12/Prime-Care-Group-nursing-and-residential-care4.jpg)',
             backgroundSize: 'cover',
@@ -141,32 +148,33 @@ export default function CareersPage() {
           }}
         />
         <div
-          className="absolute inset-0"
           style={{
+            position: 'absolute',
+            inset: 0,
             background:
               'linear-gradient(105deg, rgba(107,31,138,0.95) 0%, rgba(78,22,106,0.80) 50%, rgba(78,22,106,0.25) 100%)',
           }}
         />
 
-        <div className="container-prime relative z-10 py-20">
-          <nav className="breadcrumb mb-6" aria-label="Breadcrumb">
-            <Link href="/">Home</Link>
-            <span>/</span>
+        <div className="container-prime" style={{ position: 'relative', zIndex: 10, paddingBottom: '80px', paddingTop: '40px', width: '100%' }}>
+          <nav aria-label="Breadcrumb" style={{ marginBottom: '24px', display: 'flex', gap: '8px', fontSize: '0.875rem' }}>
+            <Link href="/" style={{ color: 'rgba(255,255,255,0.8)' }}>Home</Link>
+            <span style={{ color: 'rgba(255,255,255,0.6)' }}>/</span>
             <span style={{ color: '#28B2A1' }}>Careers</span>
           </nav>
-          <div className="section-label mb-4" style={{ color: 'rgba(255,255,255,0.75)' }}>
+          <div style={{ color: 'rgba(255,255,255,0.75)', marginBottom: '16px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', fontSize: '0.75rem' }}>
             Join Our Team
           </div>
-          <h1 className="text-display-xl text-white mb-5" style={{ maxWidth: '680px' }}>
+          <h1 className="text-display-xl text-white" style={{ maxWidth: '680px', marginBottom: '20px', lineHeight: '1.1' }}>
             A career that
             <br />
             <em style={{ color: '#A78BFA', fontStyle: 'italic' }}>truly matters.</em>
           </h1>
-          <p className="text-lg mb-8 max-w-xl" style={{ color: 'rgba(255,255,255,0.82)', lineHeight: '1.75' }}>
+          <p className="text-lg" style={{ color: 'rgba(255,255,255,0.82)', lineHeight: '1.75', maxWidth: '36rem', marginBottom: '32px' }}>
             At Prime Care Group, we believe that exceptional care starts with exceptional people.
             If you are passionate, compassionate and committed, we&apos;d love to hear from you.
           </p>
-          <div className="flex gap-3 flex-wrap">
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '80px' }}>
             <a href="#open-roles" className="btn-white">
               View Open Positions <ArrowRight size={16} />
             </a>
@@ -186,16 +194,29 @@ export default function CareersPage() {
           style={{ background: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(16px)' }}
         >
           <div className="container-prime">
-            <div className="grid grid-cols-4 divide-x">
-              {stats.map((s) => (
-                <div key={s.label} className="px-6 py-4 text-center">
+            <div style={{ display: 'flex', width: '100%' }}>
+              {stats.map((s, index) => (
+                <div 
+                  key={s.label} 
+                  style={{ 
+                    flex: '1', 
+                    padding: '16px 24px', 
+                    textAlign: 'center',
+                    borderLeft: index > 0 ? '1px solid rgba(255,255,255,0.15)' : 'none'
+                  }}
+                >
                   <div
-                    className="text-2xl font-bold mb-0.5"
-                    style={{ color: '#A78BFA', fontFamily: 'var(--font-display)' }}
+                    style={{ 
+                      fontSize: '1.5rem',
+                      fontWeight: 'bold',
+                      marginBottom: '4px',
+                      color: '#A78BFA', 
+                      fontFamily: 'var(--font-display)' 
+                    }}
                   >
                     {s.value}
                   </div>
-                  <div className="text-xs" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.65)' }}>
                     {s.label}
                   </div>
                 </div>
@@ -227,19 +248,34 @@ export default function CareersPage() {
               </p>
 
               <h3
-                className="font-bold mb-4 text-sm tracking-wide uppercase"
-                style={{ color: '#6B1F8A' }}
+                style={{ 
+                  color: '#6B1F8A', 
+                  fontWeight: 'bold', 
+                  fontSize: '0.875rem', 
+                  letterSpacing: '0.05em', 
+                  textTransform: 'uppercase',
+                  marginTop: '32px',
+                  marginBottom: '20px'
+                }}
               >
                 Our Working Values
               </h3>
-              <div className="space-y-2.5">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {values.map((v) => (
-                  <div key={v} className="flex items-start gap-3 text-sm" style={{ color: '#3A3A3C' }}>
+                  <div key={v} style={{ display: 'flex', alignItems: 'center', gap: '16px', color: '#1C1C1E', fontSize: '1.05rem', fontWeight: '500' }}>
                     <div
-                      className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                      style={{ background: '#F7F0F9' }}
+                      style={{ 
+                        background: '#F7F0F9', 
+                        width: '28px', 
+                        height: '28px', 
+                        borderRadius: '50%', 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        flexShrink: 0 
+                      }}
                     >
-                      <CheckCircle size={12} style={{ color: '#6B1F8A' }} />
+                      <CheckCircle size={16} style={{ color: '#6B1F8A' }} />
                     </div>
                     {v}
                   </div>
@@ -247,29 +283,48 @@ export default function CareersPage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div style={{ position: 'relative' }}>
               <img
                 src="https://www.primecaregroup.co.uk/wp-content/uploads/2021/12/Prime-Care-Group-nursing-and-residential-care3.jpg"
                 alt="Prime Care Group care team working together"
-                className="w-full rounded-3xl object-cover shadow-2xl"
-                style={{ aspectRatio: '4/3' }}
+                style={{ width: '100%', borderRadius: '24px', objectFit: 'cover', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', aspectRatio: '4/3' }}
               />
               {/* Floating badge */}
               <div
-                className="absolute -bottom-5 -left-5 glass rounded-2xl p-4 shadow-xl hidden md:flex items-center gap-3"
-                style={{ background: '#ffffff', border: '1px solid #E8E3DC' }}
+                className="hidden md:flex"
+                style={{ 
+                  position: 'absolute',
+                  bottom: '-20px',
+                  left: '-20px',
+                  background: 'rgba(255, 255, 255, 0.95)', 
+                  border: '1px solid #E8E3DC',
+                  borderRadius: '16px',
+                  padding: '16px 20px',
+                  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  backdropFilter: 'blur(8px)'
+                }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: '#F7F0F9' }}
+                  style={{ 
+                    background: '#F7F0F9',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
                 >
-                  <BadgeCheck size={20} style={{ color: '#6B1F8A' }} />
+                  <BadgeCheck size={24} style={{ color: '#6B1F8A' }} />
                 </div>
                 <div>
-                  <div className="text-sm font-bold" style={{ color: '#1C1C1E' }}>
+                  <div style={{ color: '#1C1C1E', fontSize: '0.9rem', fontWeight: 'bold' }}>
                     Great Place to Work
                   </div>
-                  <div className="text-xs" style={{ color: '#6E6E73' }}>
+                  <div style={{ color: '#6E6E73', fontSize: '0.75rem' }}>
                     Recognised employer
                   </div>
                 </div>
@@ -288,27 +343,47 @@ export default function CareersPage() {
               Why join Prime Care Group?
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
             {benefits.map(({ icon: Icon, title, desc, color, iconColor }) => (
               <div
                 key={title}
-                className="card-prime p-7 flex gap-4"
-                style={{ background: '#ffffff' }}
+                style={{ 
+                  background: '#ffffff',
+                  padding: '28px',
+                  display: 'flex',
+                  gap: '16px',
+                  alignItems: 'flex-start',
+                  borderRadius: '16px',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
+                }}
               >
                 <div
-                  className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0"
-                  style={{ background: color }}
+                  style={{ 
+                    background: color,
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}
                 >
                   <Icon size={20} style={{ color: iconColor }} />
                 </div>
                 <div>
                   <h3
-                    className="font-bold mb-1.5"
-                    style={{ color: '#1C1C1E', fontFamily: 'var(--font-display)', fontSize: '1rem' }}
+                    style={{ 
+                      color: '#1C1C1E', 
+                      fontFamily: 'var(--font-display)', 
+                      fontSize: '1.1rem',
+                      fontWeight: 'bold',
+                      marginBottom: '8px'
+                    }}
                   >
                     {title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: '#6E6E73' }}>
+                  <p style={{ color: '#6E6E73', fontSize: '0.875rem', lineHeight: '1.6' }}>
                     {desc}
                   </p>
                 </div>
@@ -327,20 +402,22 @@ export default function CareersPage() {
               Current open positions
             </h2>
             <p
-              className="text-body-lg mt-4 max-w-lg mx-auto"
-              style={{ textAlign: 'center' }}
+              style={{ textAlign: 'center', maxWidth: '32rem', margin: '16px auto 40px', fontSize: '1.125rem', color: '#6E6E73' }}
             >
               We are always looking for dedicated, caring professionals to join our team. Even if
               you don&apos;t see a specific role listed, please do get in touch.
             </p>
           </div>
 
-          <div className="space-y-5 max-w-4xl mx-auto">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '56rem', margin: '0 auto' }}>
             {roles.map((role) => (
               <article
                 key={role.id}
-                className="relative rounded-3xl overflow-hidden transition-all duration-300"
                 style={{
+                  position: 'relative',
+                  borderRadius: '24px',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
                   background: '#ffffff',
                   border: role.featured ? '2px solid #6B1F8A' : '1.5px solid #E8E3DC',
                   boxShadow: role.featured
@@ -361,14 +438,21 @@ export default function CareersPage() {
                   </div>
                 )}
 
-                <div className="p-8">
+                <div style={{ padding: '32px' }}>
                   {/* Header row */}
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-5">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
+                  <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px', marginBottom: '20px' }}>
+                    <div style={{ flex: '1 1 auto' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                         <div
-                          className="w-8 h-8 rounded-xl flex items-center justify-center"
-                          style={{ background: role.featured ? '#F7F0F9' : '#F0EDE8' }}
+                          style={{ 
+                            background: role.featured ? '#F7F0F9' : '#F0EDE8',
+                            width: '32px',
+                            height: '32px',
+                            borderRadius: '8px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                          }}
                         >
                           <Briefcase
                             size={15}
@@ -376,38 +460,39 @@ export default function CareersPage() {
                           />
                         </div>
                         <span
-                          className="text-xs font-semibold uppercase tracking-widest"
-                          style={{ color: role.featured ? '#6B1F8A' : '#0D5450' }}
+                          style={{ 
+                            color: role.featured ? '#6B1F8A' : '#0D5450',
+                            fontSize: '0.75rem',
+                            fontWeight: '600',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.1em'
+                          }}
                         >
                           {role.department}
                         </span>
                       </div>
                       <h3
-                        className="text-xl font-bold mb-3"
-                        style={{ color: '#1C1C1E', fontFamily: 'var(--font-display)' }}
+                        style={{ color: '#1C1C1E', fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '12px' }}
                       >
                         {role.title}
                       </h3>
 
                       {/* Badges */}
-                      <div className="flex flex-wrap gap-2">
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                         <span
-                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
-                          style={{ background: '#F7F0F9', color: '#6B1F8A' }}
+                          style={{ background: '#F7F0F9', color: '#6B1F8A', display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '9999px', fontSize: '0.75rem', fontWeight: '500' }}
                         >
                           <Clock size={11} />
                           {role.type}
                         </span>
                         <span
-                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
-                          style={{ background: '#E8F8F6', color: '#0D5450' }}
+                          style={{ background: '#E8F8F6', color: '#0D5450', display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '9999px', fontSize: '0.75rem', fontWeight: '500' }}
                         >
                           <MapPin size={11} />
                           {role.location}
                         </span>
                         <span
-                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
-                          style={{ background: '#F0EDE8', color: '#3A3A3C' }}
+                          style={{ background: '#F0EDE8', color: '#3A3A3C', display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '9999px', fontSize: '0.75rem', fontWeight: '500' }}
                         >
                           <BadgeCheck size={11} />
                           {role.salary}
@@ -417,8 +502,16 @@ export default function CareersPage() {
 
                     <Link
                       href="/contact-us"
-                      className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200"
                       style={{
+                        flexShrink: 0,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        padding: '12px 24px',
+                        borderRadius: '9999px',
+                        fontSize: '0.875rem',
+                        fontWeight: '600',
+                        textDecoration: 'none',
                         background: role.featured
                           ? 'linear-gradient(135deg, #6B1F8A, #4E166A)'
                           : '#ffffff',
@@ -427,6 +520,7 @@ export default function CareersPage() {
                         boxShadow: role.featured
                           ? '0 4px 16px rgba(107,31,138,0.3)'
                           : 'none',
+                        transition: 'all 0.2s ease'
                       }}
                     >
                       Apply Now <ArrowRight size={14} />
@@ -442,24 +536,19 @@ export default function CareersPage() {
                   </p>
 
                   {/* Divider */}
-                  <div
-                    className="border-t pt-5"
-                    style={{ borderColor: '#F0EDE8' }}
-                  >
-                    <h4 className="text-xs font-bold mb-3 uppercase tracking-widest" style={{ color: '#3A3A3C' }}>
+                  <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #F0EDE8' }}>
+                    <h4 style={{ color: '#3A3A3C', fontSize: '0.75rem', fontWeight: 'bold', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                       Key requirements
                     </h4>
-                    <div className="grid sm:grid-cols-2 gap-2">
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '8px' }}>
                       {role.requirements.map((req) => (
                         <div
                           key={req}
-                          className="flex items-start gap-2 text-sm"
-                          style={{ color: '#3A3A3C' }}
+                          style={{ color: '#3A3A3C', display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.875rem' }}
                         >
                           <CheckCircle
                             size={14}
-                            className="shrink-0 mt-0.5"
-                            style={{ color: '#28B2A1' }}
+                            style={{ color: '#28B2A1', flexShrink: 0, marginTop: '2px' }}
                           />
                           {req}
                         </div>
@@ -473,13 +562,24 @@ export default function CareersPage() {
 
           {/* Speculative applications */}
           <div
-            className="mt-8 max-w-4xl mx-auto rounded-3xl p-8 flex flex-col md:flex-row items-center gap-6 justify-between"
-            style={{ background: 'var(--color-prime-cream)', border: '1.5px dashed #C4B8D4' }}
+            style={{ 
+              background: 'var(--color-prime-cream)', 
+              border: '1.5px dashed #C4B8D4',
+              marginTop: '40px', 
+              maxWidth: '56rem', 
+              margin: '40px auto 0', 
+              borderRadius: '24px', 
+              padding: '32px', 
+              display: 'flex', 
+              flexWrap: 'wrap', 
+              alignItems: 'center', 
+              gap: '24px', 
+              justifyContent: 'space-between'
+            }}
           >
-            <div className="flex items-start gap-4">
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
               <div
-                className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0"
-                style={{ background: '#F7F0F9' }}
+                style={{ background: '#F7F0F9', width: '44px', height: '44px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
               >
                 <Users size={20} style={{ color: '#6B1F8A' }} />
               </div>
@@ -506,22 +606,26 @@ export default function CareersPage() {
 
       {/* ─── BOTTOM CTA ───────────────────────────────────────────────── */}
       <section
-        className="py-20 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #6B1F8A, #4E166A)' }}
+        style={{ 
+          background: 'linear-gradient(135deg, #6B1F8A, #4E166A)',
+          paddingTop: '6rem',
+          paddingBottom: '6rem',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
       >
-        <div className="absolute inset-0 opacity-10 bg-dots" />
-        <div className="container-prime relative z-10 text-center">
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+        <div className="container-prime text-center" style={{ position: 'relative', zIndex: 10 }}>
           <h2
-            className="text-display-md text-white mb-4"
-            style={{ fontFamily: 'var(--font-display)' }}
+            style={{ color: '#ffffff', fontFamily: 'var(--font-display)', fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '1rem' }}
           >
             Ready to make a difference?
           </h2>
-          <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.8)' }}>
+          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.125rem', maxWidth: '36rem', margin: '0 auto 2rem' }}>
             Join a team that cares — deeply, professionally, and personally. We&apos;d love to
             hear from you.
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact-us" className="btn-white">
               Get in Touch <ArrowRight size={16} />
             </Link>

@@ -95,10 +95,8 @@ export default function Navbar() {
         }}
       >
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 pl-[76px] lg:pl-[76px]">
-          <div
-            className="flex items-end justify-between"
-            style={{ height: "72px", paddingBottom: "16px" }}
-          >
+          <div className="flex items-end justify-between" style={{ height: '72px', paddingBottom: '16px' }}>
+
             {/* Logo */}
             <Link
               href="/"
@@ -114,10 +112,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
-            <div
-              className="hidden lg:flex items-center"
-              style={{ gap: "4px", marginBottom: "-4px" }}
-            >
+            <div className="hidden lg:flex items-center ml-auto" style={{ gap: '4px', marginBottom: '-4px' }}>
               {navigation.map((item) => {
                 const isActive =
                   pathname === item.href ||

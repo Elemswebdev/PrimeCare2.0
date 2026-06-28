@@ -357,27 +357,32 @@ export default function HomePage() {
         style={{ background: "#ffffff", borderBottom: "1px solid #E8E3DC" }}
       >
         <div className="container-prime">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x">
-            {[
-              { value: 20, suffix: "+", label: "Years of Experience" },
-              { value: 2, suffix: "", label: "Care Homes" },
-              { value: 58, suffix: "+", label: "Beds Available" },
-              { value: 100, suffix: "%", label: "Person-centred Care" },
-            ].map((stat, i) => (
-              <div
-                key={stat.label}
-                className="flex flex-col items-center py-8 px-6 text-center"
-                style={{ borderRight: i < 3 ? "1px solid #E8E3DC" : undefined }}
-              >
-                <div className="stat-number">
-                  <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+          <FadeUp>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
+              {[
+                { value: 20, suffix: "+", label: "Years of Experience" },
+                { value: 2, suffix: "", label: "Care Homes" },
+                { value: 58, suffix: "+", label: "Beds Available" },
+                { value: 100, suffix: "%", label: "Person-centred Care" },
+              ].map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className={`flex flex-col items-center py-8 px-6 text-center border-[#E8E3DC] ${
+                    i === 0 ? "border-r border-b md:border-b-0" :
+                    i === 1 ? "border-b md:border-b-0 md:border-r" :
+                    i === 2 ? "border-r" : ""
+                  }`}
+                >
+                  <div className="stat-number">
+                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                  </div>
+                  <div className="text-sm mt-1" style={{ color: "#6E6E73" }}>
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-sm mt-1" style={{ color: "#6E6E73" }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -670,13 +675,14 @@ export default function HomePage() {
           overflow: "hidden",
         }}
       >
-        <div
-          style={{
-            maxWidth: "720px",
-            margin: "0 auto",
-            textAlign: "center",
-          }}
-        >
+        <FadeUp>
+          <div
+            style={{
+              maxWidth: "720px",
+              margin: "0 auto",
+              textAlign: "center",
+            }}
+          >
           {/* Section label */}
           <div
             style={{
@@ -842,6 +848,7 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+        </FadeUp>
       </section>
       {/* ── KNOWLEDGE HUB ──────────────────────────────────────────── */}
       {/* <section
