@@ -158,14 +158,6 @@ export default function DementiaPage() {
               friendly care
             </span>
           </h1>
-          <p
-            className="mt-4 text-lg max-w-xl"
-            style={{ color: "rgba(255,255,255,0.75)" }}
-          >
-            At Prime Care Group, we aim to provide a secure, relaxed and homely
-            environment where care, wellbeing and comfort is of prime
-            importance.
-          </p>
         </div>
       </section>
 

@@ -53,17 +53,6 @@ const articles: Article[] = [
     readTime: "10 min read",
   },
   {
-    title: "Our response to Covid-19",
-    excerpt:
-      "The Covid-19 pandemic created unprecedented challenges to the way we all live our lives — arguably none more so than those living and working in residential care homes.",
-    href: "/knowledge-hub/our-response-to-covid-19",
-    image:
-      "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/covid-responsive.jpg",
-    category: "Health & Safety",
-    icon: Heart,
-    readTime: "5 min read",
-  },
-  {
     title: "Making a Lasting Power of Attorney and Will",
     excerpt:
       "By making a Lasting Power of Attorney, you are able to choose who is to have the legal authority to manage your affairs — a decision best made before it becomes urgent.",

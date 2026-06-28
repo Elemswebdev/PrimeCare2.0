@@ -165,13 +165,6 @@ export default function PayingForCarePage() {
               Care
             </span>
           </h1>
-          <p
-            className="mt-4 text-lg max-w-xl"
-            style={{ color: "rgba(255,255,255,0.75)" }}
-          >
-            Understanding the options available to fund nursing and residential
-            care — explained clearly and without jargon.
-          </p>
         </div>
       </section>
 
