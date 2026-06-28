@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock, ArrowRight, CheckCircle, Send } from 'lucide-react'
+import FadeUp from '@/components/FadeUp'
 
 const homes = [
   { name: "St John's Nursing Home", address: '129 Haling Park Road, South Croydon CR2 6NN', phone: '020 8255 5555', href: '/our-homes/st-johns-nursing-home' },
@@ -38,7 +39,7 @@ export default function ContactPage() {
         style={{ paddingTop: '4.5rem', background: 'linear-gradient(135deg, #083D3A 0%, #0D5450 100%)' }}
       >
         <div className="absolute inset-0 opacity-10 bg-dots" />
-        <div className="container-prime relative z-10 py-16">
+        <FadeUp className="container-prime relative z-10 py-16">
           <nav className="breadcrumb mb-6" aria-label="Breadcrumb">
             <Link href="/">Home</Link>
             <span>/</span>
@@ -51,17 +52,18 @@ export default function ContactPage() {
           <p className="mt-4 text-lg max-w-xl" style={{ color: 'rgba(255,255,255,0.75)' }}>
             Whether you want to arrange a visit, ask about care options, or simply have a chat, our friendly team is here to help.
           </p>
-        </div>
+        </FadeUp>
       </section>
 
       {/* Contact section */}
       <section className="section-pad" style={{ background: 'var(--color-prime-cream)' }}>
-        <div className="container-prime">
-          <div className="grid lg:grid-cols-3 gap-10">
+        <FadeUp className="container-prime" delay={100}>
+          <style>{`@media(min-width:1024px){:root{--contact-cols:1fr 2fr;--contact-gap:40px}}`}</style>
+          <div style={{ display: 'grid', gridTemplateColumns: 'var(--contact-cols, 1fr)', gap: 'var(--contact-gap, 40px)' }}>
             {/* Info sidebar */}
-            <div className="lg:col-span-1 space-y-6">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               {/* General contact */}
-              <div className="card-prime p-6">
+              <div className="card-prime" style={{ padding: '24px' }}>
                 <h3 className="font-bold mb-5" style={{ color: '#1C1C1E', fontFamily: 'var(--font-display)', fontSize: '1.1rem' }}>
                   General Enquiries
                 </h3>
@@ -93,7 +95,7 @@ export default function ContactPage() {
 
               {/* Homes */}
               {homes.map((home) => (
-                <div key={home.name} className="card-prime p-6">
+                <div key={home.name} className="card-prime" style={{ padding: '24px' }}>
                   <h3 className="font-bold mb-4" style={{ color: '#1C1C1E', fontFamily: 'var(--font-display)', fontSize: '0.95rem' }}>
                     {home.name}
                   </h3>
@@ -115,8 +117,8 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <div className="card-prime p-10">
+            <div>
+              <div className="card-prime" style={{ padding: '40px' }}>
                 {submitted ? (
                   <div className="text-center py-12">
                     <div
@@ -143,8 +145,9 @@ export default function ContactPage() {
                     <p className="text-sm mb-8" style={{ color: '#6E6E73' }}>
                       Fill in the form below and we&apos;ll get back to you as soon as possible — usually within one working day.
                     </p>
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                      <div className="grid md:grid-cols-2 gap-5">
+                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                      <style>{`@media(min-width:768px){:root{--form-cols:1fr 1fr;--form-gap:20px}}`}</style>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'var(--form-cols, 1fr)', gap: 'var(--form-gap, 20px)' }}>
                         <div>
                           <label className="form-label" htmlFor="contact-name">Full Name *</label>
                           <input
@@ -170,7 +173,7 @@ export default function ContactPage() {
                           />
                         </div>
                       </div>
-                      <div className="grid md:grid-cols-2 gap-5">
+                      <div style={{ display: 'grid', gridTemplateColumns: 'var(--form-cols, 1fr)', gap: 'var(--form-gap, 20px)' }}>
                         <div>
                           <label className="form-label" htmlFor="contact-phone">Phone Number</label>
                           <input
@@ -242,25 +245,36 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* Book a visit CTA */}
-      <section className="py-20" style={{ background: 'linear-gradient(135deg, #6B1F8A, #4E166A)' }}>
-        <div className="container-prime text-center">
-          <h2 className="text-display-md text-white mb-4" style={{ fontFamily: 'var(--font-display)' }}>
+      <section
+        style={{ 
+          background: 'linear-gradient(135deg, #6B1F8A, #4E166A)',
+          paddingTop: '6rem',
+          paddingBottom: '6rem',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
+      >
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+        <FadeUp className="container-prime text-center" style={{ position: 'relative', zIndex: 10 }}>
+          <h2
+            style={{ color: '#ffffff', fontFamily: 'var(--font-display)', fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '1rem' }}
+          >
             Come and see for yourself
           </h2>
-          <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.8)' }}>
+          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.125rem', maxWidth: '36rem', margin: '0 auto 2rem' }}>
             We warmly invite you to visit our homes, meet our team and see the care we provide first-hand. We will welcome you with a cup of tea and take as long as you need.
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/our-homes" className="btn-white">View Our Homes <ArrowRight size={16} /></Link>
             <a href="tel:+442082555555" className="btn-secondary" style={{ borderColor: 'rgba(255,255,255,0.5)', color: 'rgba(255,255,255,0.9)' }}>
               <Phone size={15} /> Call Today
             </a>
           </div>
-        </div>
+        </FadeUp>
       </section>
     </>
   )

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, Phone, Brain, Heart, CheckCircle } from "lucide-react";
+import FadeUp from "@/components/FadeUp";
 
 const dementiaTypes = [
   {
@@ -106,7 +107,7 @@ export default function DementiaPage() {
         }}
       >
         <div className="absolute inset-0 opacity-5 bg-dots" />
-        <div className="container-prime relative z-10 py-16">
+        <FadeUp className="container-prime relative z-10 py-16">
           <nav className="breadcrumb mb-6" aria-label="Breadcrumb">
             <Link href="/">Home</Link>
             <span>/</span>
@@ -158,12 +159,11 @@ export default function DementiaPage() {
               friendly care
             </span>
           </h1>
-        </div>
+        </FadeUp>
       </section>
 
-      {/* ── WHAT IS DEMENTIA ───────────────────────────────────────── */}
       <section style={{ background: "#ffffff", padding: "80px 0" }}>
-        <div
+        <FadeUp
           style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}
         >
           <div
@@ -254,7 +254,7 @@ export default function DementiaPage() {
               />
             </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── TYPES OF DEMENTIA ──────────────────────────────────────── */}
@@ -384,7 +384,7 @@ export default function DementiaPage() {
               </div>
             ))}
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── STAGES ─────────────────────────────────────────────────── */}
@@ -521,12 +521,12 @@ export default function DementiaPage() {
               </div>
             ))}
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── NATIONAL DEMENTIA STRATEGY ─────────────────────────────── */}
       <section style={{ background: "#ffffff", padding: "80px 0" }}>
-        <div style={{ maxWidth: "780px", margin: "0 auto", padding: "0 24px" }}>
+        <FadeUp style={{ maxWidth: "780px", margin: "0 auto", padding: "0 24px" }}>
           <div
             style={{
               display: "flex",
@@ -579,7 +579,7 @@ export default function DementiaPage() {
               {p}
             </p>
           ))}
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── DEMENTIA FRIENDLY ENVIRONMENTS ────────────────────────── */}
@@ -722,7 +722,7 @@ export default function DementiaPage() {
               </p>
             </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── PERSONALISED CARE PLANS ────────────────────────────────── */}
@@ -849,7 +849,7 @@ export default function DementiaPage() {
               </div>
             </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── FOOD & HEALTHCARE ──────────────────────────────────────── */}
@@ -979,7 +979,7 @@ export default function DementiaPage() {
               />
             </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── OUR HOMES ──────────────────────────────────────────────── */}
@@ -1129,7 +1129,7 @@ export default function DementiaPage() {
               </div>
             ))}
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── CTA ────────────────────────────────────────────────────── */}
@@ -1162,18 +1162,18 @@ export default function DementiaPage() {
             height: "240px",
             borderRadius: "50%",
             background: "rgba(255,255,255,0.04)",
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            maxWidth: "640px",
-            margin: "0 auto",
-            textAlign: "center",
-            position: "relative",
-            zIndex: 1,
-          }}
-        >
+          pointerEvents: "none",
+        }}
+      />
+      <FadeUp
+        style={{
+          maxWidth: "640px",
+          margin: "0 auto",
+          textAlign: "center",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
           <Heart
             size={36}
             style={{ color: "#28B2A1", margin: "0 auto 20px" }}
@@ -1258,10 +1258,8 @@ export default function DementiaPage() {
                 e.currentTarget.style.background = "transparent";
               }}
             >
-              <Phone size={15} /> Call Us
-            </a>
           </div>
-        </div>
+        </FadeUp>
       </section>
     </>
   );

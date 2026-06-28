@@ -10,6 +10,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+import FadeUp from "@/components/FadeUp";
 
 const fundingOptions = [
   {
@@ -113,7 +114,7 @@ export default function PayingForCarePage() {
         }}
       >
         <div className="absolute inset-0 opacity-5 bg-dots" />
-        <div className="container-prime relative z-10 py-16">
+        <FadeUp className="container-prime relative z-10 py-16">
           <nav className="breadcrumb mb-6" aria-label="Breadcrumb">
             <Link href="/">Home</Link>
             <span>/</span>
@@ -165,12 +166,12 @@ export default function PayingForCarePage() {
               Care
             </span>
           </h1>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── INTRO ──────────────────────────────────────────────────── */}
       <section style={{ background: "#ffffff", padding: "80px 0" }}>
-        <div
+        <FadeUp
           style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}
         >
           <div
@@ -261,12 +262,12 @@ export default function PayingForCarePage() {
               />
             </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── FUNDING OPTIONS ACCORDION ──────────────────────────────── */}
       <section style={{ background: "#FAFAFA", padding: "80px 0" }}>
-        <div
+        <FadeUp
           style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}
         >
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
@@ -478,12 +479,12 @@ export default function PayingForCarePage() {
               );
             })}
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── DISCLAIMER BANNER ──────────────────────────────────────── */}
       <section style={{ background: "#ffffff", padding: "48px 0" }}>
-        <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 24px" }}>
+        <FadeUp style={{ maxWidth: "860px", margin: "0 auto", padding: "0 24px" }}>
           <div
             style={{
               background: "#FFF8E7",
@@ -523,12 +524,12 @@ export default function PayingForCarePage() {
               </p>
             </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── LPA LINK ───────────────────────────────────────────────── */}
       <section style={{ background: "#E9F7F5", padding: "64px 0" }}>
-        <div
+        <FadeUp
           style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}
         >
           <div
@@ -643,12 +644,12 @@ export default function PayingForCarePage() {
               />
             </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── OUR HOMES ──────────────────────────────────────────────── */}
       <section style={{ background: "#ffffff", padding: "80px 0" }}>
-        <div
+        <FadeUp
           style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}
         >
           <div style={{ textAlign: "center", marginBottom: "48px" }}>
@@ -793,7 +794,7 @@ export default function PayingForCarePage() {
               </div>
             ))}
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── CTA ────────────────────────────────────────────────────── */}
@@ -826,18 +827,18 @@ export default function PayingForCarePage() {
             height: "240px",
             borderRadius: "50%",
             background: "rgba(255,255,255,0.04)",
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            maxWidth: "640px",
-            margin: "0 auto",
-            textAlign: "center",
-            position: "relative",
-            zIndex: 1,
-          }}
-        >
+          pointerEvents: "none",
+        }}
+      />
+      <FadeUp
+        style={{
+          maxWidth: "640px",
+          margin: "0 auto",
+          textAlign: "center",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
           <h2
             style={{
               fontFamily: "var(--font-display,'Plus Jakarta Sans',sans-serif)",
@@ -918,10 +919,8 @@ export default function PayingForCarePage() {
                 e.currentTarget.style.background = "transparent";
               }}
             >
-              <Phone size={15} /> Call Us
-            </a>
           </div>
-        </div>
+        </FadeUp>
       </section>
     </>
   );

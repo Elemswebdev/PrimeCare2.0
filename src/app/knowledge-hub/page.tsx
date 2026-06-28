@@ -11,6 +11,7 @@ import {
   Sparkles,
   BookOpenText,
 } from "lucide-react";
+import FadeUp from "@/components/FadeUp";
 
 export const metadata: Metadata = {
   title: "Knowledge Hub — Care Guides & Resources | Prime Care Group",
@@ -364,7 +365,7 @@ export default function KnowledgeHubPage() {
               background: "linear-gradient(180deg, transparent, #D8CFE0)",
             }}
           />
-          <div
+          <FadeUp
             style={{ maxWidth: "720px", margin: "0 auto", textAlign: "center" }}
           >
             <div
@@ -442,12 +443,13 @@ export default function KnowledgeHubPage() {
             >
               <BookOpenText size={18} />
             </div>
-          </div>
+            </div>
+          </FadeUp>
         </section>
 
         {/* ============ MAIN CONTENT ============ */}
         <section style={{ padding: "0 1.5rem 6rem" }}>
-          <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
+          <FadeUp style={{ maxWidth: "1180px", margin: "0 auto" }}>
             {/* Article grid — featured card sits first, same size as the rest */}
             <div
               style={{
@@ -725,7 +727,7 @@ export default function KnowledgeHubPage() {
                 );
               })}
             </div>
-          </div>
+          </FadeUp>
         </section>
       </div>
     </>
