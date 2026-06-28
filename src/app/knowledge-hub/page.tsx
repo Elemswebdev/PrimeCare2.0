@@ -3,17 +3,13 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
-  Search,
   Brain,
   CreditCard,
   Heart,
   FileText,
   ShieldAlert,
   Sparkles,
-  Phone,
-  Mail,
-  Compass,
-  Download,
+  BookOpenText,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -91,13 +87,6 @@ const articles: Article[] = [
   },
 ];
 
-const topics = [
-  { label: "Health & Care", count: 1 },
-  { label: "Funding & Finance", count: 1 },
-  { label: "Health & Safety", count: 2 },
-  { label: "Legal & Planning", count: 1 },
-];
-
 export default function KnowledgeHubPage() {
   return (
     <>
@@ -125,12 +114,6 @@ export default function KnowledgeHubPage() {
         .kh-arrow-btn { transition: background 0.25s ease, transform 0.25s ease, color 0.25s ease; }
         .kh-card:hover .kh-arrow-btn { background: #0D3D38; color: #FAF7F0; transform: translateX(3px); }
 
-        .kh-cta-primary { transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; }
-        .kh-cta-primary:hover { background: #5B2E63; transform: translateY(-2px); box-shadow: 0 12px 28px -6px rgba(91,46,99,0.4); }
-
-        .kh-cta-ghost { transition: background 0.25s ease, border-color 0.25s ease; }
-        .kh-cta-ghost:hover { background: rgba(255,255,255,0.12); }
-
         .kh-featured-cta { transition: gap 0.25s ease, background 0.25s ease; }
         .kh-featured-cta:hover { gap: 0.85rem; background: #0A2F2B; }
 
@@ -139,13 +122,6 @@ export default function KnowledgeHubPage() {
           animation: khFadeUp 0.7s ease forwards;
         }
         @keyframes khFadeUp { to { opacity: 1; transform: translateY(0); } }
-
-        .kh-sidebar-link { transition: color 0.2s ease, padding-left 0.2s ease; }
-        .kh-sidebar-link:hover { color: #0D3D38; padding-left: 4px; }
-
-        .kh-topic-chip { transition: background 0.2s ease, border-color 0.2s ease; }
-        .kh-topic-chip:hover { background: #0D3D38; border-color: #0D3D38; }
-        .kh-topic-chip:hover span, .kh-topic-chip:hover svg { color: #FAF7F0 !important; }
 
         @media (prefers-reduced-motion: reduce) {
           .kh-reveal { animation: none; opacity: 1; transform: none; }
@@ -378,163 +354,142 @@ export default function KnowledgeHubPage() {
           </div>
         </section>
 
-        {/* ============ INTRO + SEARCH ============ */}
+        {/* ============ WHERE TO START (centred editorial) ============ */}
         <section
-          style={{ padding: "4.5rem 1.5rem 3rem", background: "#FAF7F0" }}
+          style={{
+            padding: "6rem 1.5rem 5rem",
+            background: "#FAF7F0",
+            position: "relative",
+            overflow: "hidden",
+          }}
         >
-          <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "1px",
+              height: "64px",
+              background: "linear-gradient(180deg, transparent, #D8CFE0)",
+            }}
+          />
+          <div
+            style={{ maxWidth: "720px", margin: "0 auto", textAlign: "center" }}
+          >
             <div
               style={{
-                display: "grid",
-                gridTemplateColumns: "minmax(0,1fr) minmax(0,0.85fr)",
-                gap: "3rem",
+                display: "inline-flex",
                 alignItems: "center",
-                marginBottom: "3rem",
+                gap: "0.5rem",
+                fontSize: "13px",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "#5B2E63",
+                fontWeight: 600,
+                marginBottom: "1.5rem",
               }}
             >
-              <div>
-                <div
-                  style={{
-                    fontSize: "13px",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: "#5B2E63",
-                    fontWeight: 600,
-                    marginBottom: "1rem",
-                  }}
-                >
-                  Where to start
-                </div>
-                <h2
-                  className="kh-serif"
-                  style={{
-                    fontSize: "clamp(1.7rem, 3vw, 2.3rem)",
-                    fontWeight: 500,
-                    color: "#0D3D38",
-                    lineHeight: 1.2,
-                    marginBottom: "1rem",
-                  }}
-                >
-                  Five guides, written by people who actually answer the phone.
-                </h2>
-                <p
-                  style={{
-                    fontSize: "1rem",
-                    lineHeight: 1.75,
-                    color: "#4A453E",
-                    maxWidth: "560px",
-                  }}
-                >
-                  Every guide below comes from questions our own families have
-                  asked us — about dementia care, paying for a place, legal
-                  planning, and keeping residents safe. Read at your own pace,
-                  or call and we'll talk it through.
-                </p>
-              </div>
+              <span
+                style={{
+                  width: "20px",
+                  height: "1px",
+                  background: "#5B2E63",
+                  display: "inline-block",
+                }}
+              />
+              Where to start
+              <span
+                style={{
+                  width: "20px",
+                  height: "1px",
+                  background: "#5B2E63",
+                  display: "inline-block",
+                }}
+              />
+            </div>
 
-              {/* search (visual only) */}
-              <div>
-                <div
-                  role="search"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.65rem",
-                    background: "#FFFFFF",
-                    border: "1px solid #E8E1D2",
-                    borderRadius: "999px",
-                    padding: "0.85rem 1.25rem",
-                    boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
-                  }}
-                >
-                  <Search
-                    size={17}
-                    style={{ color: "#9A938A", flexShrink: 0 }}
-                    aria-hidden="true"
-                  />
-                  <input
-                    type="search"
-                    placeholder="Search guides — try funding or dementia"
-                    aria-label="Search the knowledge hub"
-                    style={{
-                      border: "none",
-                      outline: "none",
-                      background: "transparent",
-                      fontSize: "0.92rem",
-                      width: "100%",
-                      color: "#1C1C1E",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "0.5rem",
-                    flexWrap: "wrap",
-                    marginTop: "0.9rem",
-                  }}
-                >
-                  {topics.map((t) => (
-                    <button
-                      key={t.label}
-                      type="button"
-                      className="kh-topic-chip"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.4rem",
-                        fontSize: "0.78rem",
-                        padding: "0.4rem 0.8rem",
-                        borderRadius: "999px",
-                        border: "1px solid #E8E1D2",
-                        background: "#FFFFFF",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <span style={{ color: "#3A352D" }}>{t.label}</span>
-                      <span style={{ color: "#9A938A", fontSize: "0.74rem" }}>
-                        {t.count}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
+            <h2
+              className="kh-serif"
+              style={{
+                fontSize: "clamp(1.9rem, 3.6vw, 2.7rem)",
+                fontWeight: 500,
+                color: "#0D3D38",
+                lineHeight: 1.18,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Five guides, written by people
+              <br />
+              who actually answer the phone.
+            </h2>
+
+            <p
+              style={{
+                fontSize: "1.08rem",
+                lineHeight: 1.85,
+                color: "#4A453E",
+                maxWidth: "560px",
+                margin: "0 auto",
+              }}
+            >
+              Every guide below comes from questions our own families have asked
+              us — about dementia care, paying for a place, legal planning, and
+              keeping residents safe. Read at your own pace, or call and we'll
+              talk it through.
+            </p>
+
+            <div
+              aria-hidden="true"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.6rem",
+                marginTop: "2.5rem",
+                color: "#A88FAE",
+              }}
+            >
+              <BookOpenText size={18} />
             </div>
           </div>
         </section>
 
-        {/* ============ MAIN CONTENT + SIDEBAR ============ */}
+        {/* ============ MAIN CONTENT ============ */}
         <section style={{ padding: "0 1.5rem 6rem" }}>
-          <div
-            style={{
-              maxWidth: "1280px",
-              margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns: "minmax(0,1fr) 300px",
-              gap: "3.5rem",
-              alignItems: "start",
-            }}
-          >
-            {/* -------- Main column -------- */}
-            <div style={{ minWidth: 0 }}>
+          <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
+            {/* Article grid — featured card sits first, same size as the rest */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, minmax(0,1fr))",
+                gap: "1.75rem",
+              }}
+            >
               {/* Featured article */}
               <Link
                 href={featured.href}
                 aria-label={`Read guide: ${featured.title}`}
+                className="kh-card"
                 style={{
-                  display: "block",
+                  display: "flex",
+                  flexDirection: "column",
                   textDecoration: "none",
                   position: "relative",
-                  borderRadius: "24px",
+                  background: "#0D3D38",
+                  border: "1px solid #0D3D38",
+                  borderRadius: "20px",
                   overflow: "hidden",
-                  marginBottom: "3.5rem",
-                  minHeight: "460px",
                 }}
-                className="kh-card"
               >
                 <div
                   className="kh-img-zoom"
-                  style={{ position: "absolute", inset: 0 }}
+                  style={{
+                    aspectRatio: "16/10",
+                    overflow: "hidden",
+                    position: "relative",
+                  }}
                 >
                   <img
                     src={featured.image}
@@ -543,28 +498,25 @@ export default function KnowledgeHubPage() {
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background:
+                        "linear-gradient(180deg, rgba(13,61,56,0) 0%, rgba(13,61,56,0.25) 70%, rgba(10,30,27,0.7) 100%)",
                     }}
                   />
                 </div>
                 <div
-                  aria-hidden="true"
                   style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(180deg, rgba(13,61,56,0.15) 0%, rgba(13,61,56,0.55) 55%, rgba(10,30,27,0.92) 100%)",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "relative",
-                    zIndex: 1,
-                    padding: "2.75rem",
+                    padding: "1.5rem",
                     display: "flex",
                     flexDirection: "column",
-                    height: "100%",
-                    minHeight: "460px",
-                    justifyContent: "flex-end",
+                    flex: 1,
                   }}
                 >
                   <div
@@ -572,18 +524,18 @@ export default function KnowledgeHubPage() {
                       display: "flex",
                       alignItems: "center",
                       gap: "0.6rem",
-                      marginBottom: "1.25rem",
+                      marginBottom: "0.85rem",
                     }}
                   >
                     <span
                       style={{
-                        fontSize: "0.72rem",
+                        fontSize: "0.7rem",
                         fontWeight: 600,
-                        letterSpacing: "0.04em",
+                        letterSpacing: "0.03em",
                         textTransform: "uppercase",
-                        background: "rgba(255,255,255,0.16)",
+                        background: "rgba(255,255,255,0.14)",
                         color: "#FAF7F0",
-                        padding: "0.35rem 0.8rem",
+                        padding: "0.3rem 0.7rem",
                         borderRadius: "999px",
                       }}
                     >
@@ -591,8 +543,8 @@ export default function KnowledgeHubPage() {
                     </span>
                     <span
                       style={{
-                        fontSize: "0.78rem",
-                        color: "rgba(250,247,240,0.7)",
+                        fontSize: "0.76rem",
+                        color: "rgba(250,247,240,0.65)",
                       }}
                     >
                       {featured.readTime}
@@ -601,415 +553,189 @@ export default function KnowledgeHubPage() {
                   <h3
                     className="kh-serif"
                     style={{
-                      fontSize: "clamp(1.8rem, 3.2vw, 2.6rem)",
-                      fontWeight: 500,
+                      fontSize: "1.18rem",
+                      fontWeight: 600,
                       color: "#FAF7F0",
-                      lineHeight: 1.12,
-                      maxWidth: "620px",
-                      marginBottom: "0.9rem",
+                      lineHeight: 1.3,
+                      marginBottom: "0.6rem",
                     }}
                   >
                     {featured.title}
                   </h3>
                   <p
                     style={{
-                      fontSize: "0.98rem",
-                      lineHeight: 1.7,
-                      color: "rgba(250,247,240,0.82)",
-                      maxWidth: "560px",
-                      marginBottom: "1.75rem",
+                      fontSize: "0.86rem",
+                      lineHeight: 1.65,
+                      color: "rgba(250,247,240,0.78)",
+                      marginBottom: "1.25rem",
+                      flex: 1,
                     }}
                   >
                     {featured.excerpt}
                   </p>
-                  <span
-                    className="kh-featured-cta"
+                  <div
                     style={{
-                      display: "inline-flex",
+                      display: "flex",
                       alignItems: "center",
-                      gap: "0.6rem",
-                      background: "rgba(255,255,255,0.95)",
-                      color: "#0D3D38",
-                      padding: "0.85rem 1.5rem",
-                      borderRadius: "999px",
-                      fontSize: "0.92rem",
-                      fontWeight: 600,
-                      width: "fit-content",
+                      justifyContent: "space-between",
                     }}
                   >
-                    Read the guide <ArrowRight size={16} />
-                  </span>
+                    <span
+                      style={{
+                        fontSize: "0.85rem",
+                        fontWeight: 600,
+                        color: "#FAF7F0",
+                      }}
+                    >
+                      Read guide
+                    </span>
+                    <span
+                      className="kh-arrow-btn"
+                      style={{
+                        width: "32px",
+                        height: "32px",
+                        borderRadius: "50%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        background: "rgba(255,255,255,0.14)",
+                        color: "#FAF7F0",
+                      }}
+                    >
+                      <ArrowUpRight size={15} />
+                    </span>
+                  </div>
                 </div>
               </Link>
 
-              {/* Article grid */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, minmax(0,1fr))",
-                  gap: "1.75rem",
-                }}
-              >
-                {articles.map((article, i) => {
-                  const Icon = article.icon;
-                  return (
-                    <Link
-                      key={article.href}
-                      href={article.href}
-                      className="kh-card"
+              {articles.map((article, i) => {
+                const Icon = article.icon;
+                return (
+                  <Link
+                    key={article.href}
+                    href={article.href}
+                    className="kh-card"
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      textDecoration: "none",
+                      background: i % 2 === 0 ? "#FFFFFF" : "#EEF5F3",
+                      border: "1px solid #E8E1D2",
+                      borderRadius: "20px",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div
+                      className="kh-img-zoom"
+                      style={{ aspectRatio: "16/10", overflow: "hidden" }}
+                    >
+                      <img
+                        src={article.image}
+                        alt=""
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          display: "block",
+                        }}
+                      />
+                    </div>
+                    <div
                       style={{
+                        padding: "1.5rem",
                         display: "flex",
                         flexDirection: "column",
-                        textDecoration: "none",
-                        background: i % 2 === 0 ? "#FFFFFF" : "#EEF5F3",
-                        border: "1px solid #E8E1D2",
-                        borderRadius: "20px",
-                        overflow: "hidden",
+                        flex: 1,
                       }}
                     >
                       <div
-                        className="kh-img-zoom"
-                        style={{ aspectRatio: "16/10", overflow: "hidden" }}
-                      >
-                        <img
-                          src={article.image}
-                          alt=""
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                            display: "block",
-                          }}
-                        />
-                      </div>
-                      <div
                         style={{
-                          padding: "1.5rem",
                           display: "flex",
-                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "0.6rem",
+                          marginBottom: "0.85rem",
+                        }}
+                      >
+                        <span
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "0.35rem",
+                            fontSize: "0.7rem",
+                            fontWeight: 600,
+                            letterSpacing: "0.03em",
+                            color: "#5B2E63",
+                            background: "#F3EEE3",
+                            padding: "0.3rem 0.7rem",
+                            borderRadius: "999px",
+                          }}
+                        >
+                          <Icon size={12} /> {article.category}
+                        </span>
+                        <span style={{ fontSize: "0.76rem", color: "#9A938A" }}>
+                          {article.readTime}
+                        </span>
+                      </div>
+                      <h3
+                        className="kh-serif"
+                        style={{
+                          fontSize: "1.18rem",
+                          fontWeight: 600,
+                          color: "#1C1C1E",
+                          lineHeight: 1.3,
+                          marginBottom: "0.6rem",
+                        }}
+                      >
+                        {article.title}
+                      </h3>
+                      <p
+                        style={{
+                          fontSize: "0.86rem",
+                          lineHeight: 1.65,
+                          color: "#6E6E73",
+                          marginBottom: "1.25rem",
                           flex: 1,
                         }}
                       >
-                        <div
+                        {article.excerpt}
+                      </p>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <span
                           style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "0.6rem",
-                            marginBottom: "0.85rem",
-                          }}
-                        >
-                          <span
-                            style={{
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: "0.35rem",
-                              fontSize: "0.7rem",
-                              fontWeight: 600,
-                              letterSpacing: "0.03em",
-                              color: "#5B2E63",
-                              background: "#F3EEE3",
-                              padding: "0.3rem 0.7rem",
-                              borderRadius: "999px",
-                            }}
-                          >
-                            <Icon size={12} /> {article.category}
-                          </span>
-                          <span
-                            style={{ fontSize: "0.76rem", color: "#9A938A" }}
-                          >
-                            {article.readTime}
-                          </span>
-                        </div>
-                        <h3
-                          className="kh-serif"
-                          style={{
-                            fontSize: "1.18rem",
+                            fontSize: "0.85rem",
                             fontWeight: 600,
-                            color: "#1C1C1E",
-                            lineHeight: 1.3,
-                            marginBottom: "0.6rem",
+                            color: "#0D3D38",
                           }}
                         >
-                          {article.title}
-                        </h3>
-                        <p
+                          Read guide
+                        </span>
+                        <span
+                          className="kh-arrow-btn"
                           style={{
-                            fontSize: "0.86rem",
-                            lineHeight: 1.65,
-                            color: "#6E6E73",
-                            marginBottom: "1.25rem",
-                            flex: 1,
-                          }}
-                        >
-                          {article.excerpt}
-                        </p>
-                        <div
-                          style={{
+                            width: "32px",
+                            height: "32px",
+                            borderRadius: "50%",
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "space-between",
+                            justifyContent: "center",
+                            background: "#F3EEE3",
+                            color: "#0D3D38",
                           }}
                         >
-                          <span
-                            style={{
-                              fontSize: "0.85rem",
-                              fontWeight: 600,
-                              color: "#0D3D38",
-                            }}
-                          >
-                            Read guide
-                          </span>
-                          <span
-                            className="kh-arrow-btn"
-                            style={{
-                              width: "32px",
-                              height: "32px",
-                              borderRadius: "50%",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              background: "#F3EEE3",
-                              color: "#0D3D38",
-                            }}
-                          >
-                            <ArrowUpRight size={15} />
-                          </span>
-                        </div>
+                          <ArrowUpRight size={15} />
+                        </span>
                       </div>
-                    </Link>
-                  );
-                })}
-              </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
-
-            {/* -------- Sidebar -------- */}
-            <aside
-              style={{
-                position: "sticky",
-                top: "6.5rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.5rem",
-              }}
-            >
-              <div
-                style={{
-                  background: "#FFFFFF",
-                  border: "1px solid #E8E1D2",
-                  borderRadius: "18px",
-                  padding: "1.5rem",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    marginBottom: "1.1rem",
-                  }}
-                >
-                  <Compass size={16} style={{ color: "#5B2E63" }} />
-                  <span
-                    style={{
-                      fontSize: "0.85rem",
-                      fontWeight: 600,
-                      color: "#1C1C1E",
-                    }}
-                  >
-                    Browse by topic
-                  </span>
-                </div>
-                <nav
-                  aria-label="Browse guides by topic"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.6rem",
-                  }}
-                >
-                  {topics.map((t) => (
-                    <a
-                      key={t.label}
-                      href="#"
-                      className="kh-sidebar-link"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        fontSize: "0.87rem",
-                        color: "#3A352D",
-                        textDecoration: "none",
-                      }}
-                    >
-                      <span>{t.label}</span>
-                      <span style={{ color: "#9A938A" }}>{t.count}</span>
-                    </a>
-                  ))}
-                </nav>
-              </div>
-
-              <div
-                style={{
-                  background: "#FFFFFF",
-                  border: "1px solid #E8E1D2",
-                  borderRadius: "18px",
-                  padding: "1.5rem",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "0.85rem",
-                    fontWeight: 600,
-                    color: "#1C1C1E",
-                    marginBottom: "1.1rem",
-                  }}
-                >
-                  Quick links
-                </div>
-                <nav
-                  aria-label="Quick links"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.65rem",
-                  }}
-                >
-                  {[
-                    {
-                      label: "St John's Nursing Home",
-                      href: "/our-homes/st-johns-nursing-home",
-                    },
-                    {
-                      label: "Gibson's Lodge Nursing Home",
-                      href: "/our-homes/gibsons-lodge-nursing-home",
-                    },
-                    {
-                      label: "Read family testimonials",
-                      href: "/testimonials",
-                    },
-                  ].map((l) => (
-                    <Link
-                      key={l.href}
-                      href={l.href}
-                      className="kh-sidebar-link"
-                      style={{
-                        fontSize: "0.87rem",
-                        color: "#3A352D",
-                        textDecoration: "none",
-                      }}
-                    >
-                      {l.label}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
-
-              <div
-                style={{
-                  background: "#FFFFFF",
-                  border: "1px solid #E8E1D2",
-                  borderRadius: "18px",
-                  padding: "1.5rem",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    marginBottom: "0.9rem",
-                  }}
-                >
-                  <Download size={16} style={{ color: "#5B2E63" }} />
-                  <span
-                    style={{
-                      fontSize: "0.85rem",
-                      fontWeight: 600,
-                      color: "#1C1C1E",
-                    }}
-                  >
-                    Downloadable resources
-                  </span>
-                </div>
-                <p
-                  style={{
-                    fontSize: "0.82rem",
-                    color: "#6E6E73",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  We're putting together printable versions of our most-read
-                  guides. Call our team if you'd like a paper copy posted to you
-                  in the meantime.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  background: "#0D3D38",
-                  borderRadius: "18px",
-                  padding: "1.75rem",
-                  color: "#FAF7F0",
-                }}
-              >
-                <div
-                  className="kh-serif"
-                  style={{
-                    fontSize: "1.1rem",
-                    fontWeight: 600,
-                    marginBottom: "0.6rem",
-                  }}
-                >
-                  Speak to our team
-                </div>
-                <p
-                  style={{
-                    fontSize: "0.84rem",
-                    color: "rgba(250,247,240,0.75)",
-                    lineHeight: 1.6,
-                    marginBottom: "1.25rem",
-                  }}
-                >
-                  Have a question that isn't covered here? We're happy to talk
-                  it through.
-                </p>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.7rem",
-                  }}
-                >
-                  <a
-                    href="tel:02086883053"
-                    className="kh-link-underline"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.6rem",
-                      color: "#FAF7F0",
-                      fontSize: "0.86rem",
-                    }}
-                  >
-                    <Phone size={14} style={{ color: "#E8A77E" }} /> 020 8688
-                    3053
-                  </a>
-                  <a
-                    href="mailto:info@primecaregroup.co.uk"
-                    className="kh-link-underline"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.6rem",
-                      color: "#FAF7F0",
-                      fontSize: "0.86rem",
-                    }}
-                  >
-                    <Mail size={14} style={{ color: "#E8A77E" }} />{" "}
-                    info@primecaregroup.co.uk
-                  </a>
-                </div>
-              </div>
-            </aside>
           </div>
         </section>
       </div>

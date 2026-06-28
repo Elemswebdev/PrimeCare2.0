@@ -14,91 +14,101 @@ import {
 } from "lucide-react";
 
 const careTypes = [
+  "Nursing Care",
+  "Residential Care",
   "Dementia Care",
-  "Alzheimer's",
-  "Mental Health Conditions",
-  "Bipolar / Manic Depression",
-  "Schizophrenia",
-  "Challenging Behaviour",
-  "Detention under the Mental Health Act",
-  "Learning Disability",
+  "Palliative Care",
+  "Respite Care",
+  "Parkinson's Care",
+  "Convalescence Care",
+  "Mental Health",
   "Physical Disability",
   "Sensory Impairment",
-  "Parkinson's Disease",
-  "Multiple Sclerosis",
-  "Cancer Care",
-  "Epilepsy",
-  "Head / Brain Injury",
-  "Substance Misuse & Alcohol Dependence",
-  "Eating Disorders",
-  "Self-Harming",
-  "Hearing Impairment",
-  "Old Age",
+  "Alzheimer's",
+  "Challenging Behaviour",
 ];
 
 const facilities = [
   "Close to local shops",
-  "Gardens for residents",
-  "Ground floor accommodation",
+  "Secure landscaped gardens",
   "Lift & stair lift",
   "Wheelchair access",
   "Minibus & near public transport",
   "Residents can bring own furniture",
-  "Pets welcome by arrangement",
   "Phone & TV point in room",
   "Residents internet access",
-  "24-hour call system",
-  "All bedrooms en-suite",
+  "Hairdressing salon",
+  "Grand ground floor dining room",
+  "Patio lounge",
+  "Family visiting rooms",
 ];
 
 const activities = [
-  "Movie afternoons",
-  "Reminiscence therapy",
-  "Poetry sessions",
-  "Arts & crafts",
-  "Regular social events",
-  "Weekly rehabilitation programme",
+  "Bowling, balloon badminton & basketball",
+  "Light exercise & armchair exercises",
+  "Reminiscence days with old photos",
+  "Arts & crafts sessions",
+  "Quizzes & regular sing-alongs",
+  "Celebrations of special days",
+  "Beautiful secure landscaped garden",
   "Seasonal & cultural celebrations",
-  "Family participation welcomed",
 ];
 
 const galleryImages = [
   {
-    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/gibsons-slide1.jpg",
-    alt: "Gibson's Lodge interior",
+    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/stjohn-slide3.jpg",
+    alt: "St John's lounge",
   },
   {
-    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/gibsons-slide7.jpg",
-    alt: "Gibson's Lodge communal space",
+    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/stjohn-slide4.jpg",
+    alt: "St John's dining",
   },
   {
-    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/gibsons-slide2.jpg",
-    alt: "Gibson's Lodge lounge",
+    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/stjohn-slide2.jpg",
+    alt: "St John's corridor",
   },
   {
-    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/gibsons-slide3.jpg",
-    alt: "Gibson's Lodge bedroom",
+    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/prime-care-group-bedroom.jpg",
+    alt: "St John's bedroom",
   },
   {
-    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/gibsons-slide4.jpg",
-    alt: "Gibson's Lodge garden",
+    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/prime-care-group-residents.jpg",
+    alt: "Residents enjoying activities",
   },
   {
-    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/gibsons-slide5.jpg",
-    alt: "Gibson's Lodge dining area",
+    src: "https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/stjohn-slide1.jpg",
+    alt: "St John's garden",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "The staff are always helpful and caring. The home is regularly decorated and the staff try to put on entertainment for special days, it is a multicultural environment without friction.",
-    author: "Marion S",
-    relation: "Wife of Resident",
+      "The carers have treated the residents with good care and support. The activities have been varied and excellent. The place is very secure, which is good for residents with dementia.",
+    author: "M G",
+    relation: "Daughter of Resident",
+  },
+  {
+    quote:
+      "I am forever grateful for the love, care, and compassion the staff of St John's gave my mother-in-law. I cannot praise this nursing home enough.",
+    author: "John E",
+    relation: "Son-in-law of Resident",
+  },
+  {
+    quote:
+      "It was a great comfort to know she was safe and well looked after. She was treated with kindness, respect and dignity and she was always clean and well dressed.",
+    author: "Clare A",
+    relation: "Daughter of Resident",
+  },
+  {
+    quote:
+      "I still can't express how good St John's is. I came every day and could see how loved she was. I mean 'loved'; it was touching.",
+    author: "John B",
+    relation: "Husband of Resident",
   },
 ];
 
-export default function GibsonsLodgePage() {
+export default function StJohnsPage() {
   const [activeGallery, setActiveGallery] = useState(0);
 
   return (
@@ -117,7 +127,7 @@ export default function GibsonsLodgePage() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "url(https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/Gibsons-Lodge-Nursing-Home-london.jpg)",
+              "url(https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/St-Johns-Nursing-Home-london.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -136,17 +146,17 @@ export default function GibsonsLodgePage() {
             <Link href="/our-homes">Our Homes</Link>
             <span>/</span>
             <span style={{ color: "#28B2A1" }}>
-              Gibson&apos;s Lodge Nursing Home
+              St John&apos;s Nursing Home
             </span>
           </nav>
           <div className="section-label" style={{ color: "#45C9B8" }}>
-            Streatham, South West London
+            South Croydon, Surrey
           </div>
           <h1
             className="text-display-xl text-white mt-2 mb-4"
             style={{ maxWidth: "700px" }}
           >
-            Gibson&apos;s Lodge
+            St John&apos;s
             <br />
             <span className="italic" style={{ color: "#28B2A1" }}>
               Nursing Home
@@ -170,7 +180,7 @@ export default function GibsonsLodgePage() {
               }}
             >
               <MapPin size={15} style={{ color: "#28B2A1" }} />
-              Gibson&apos;s Hill, London SW16 3ES
+              129 Haling Park Road, South Croydon CR2 6NN
             </div>
             <div
               style={{
@@ -182,7 +192,7 @@ export default function GibsonsLodgePage() {
               }}
             >
               <Bed size={15} style={{ color: "#28B2A1" }} />
-              52 Beds
+              58 Beds
             </div>
             <div
               style={{
@@ -223,7 +233,7 @@ export default function GibsonsLodgePage() {
               Book a Visit <ArrowRight size={16} />
             </Link>
             <a
-              href="tel:02086704098"
+              href="tel:02086883053"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -244,7 +254,7 @@ export default function GibsonsLodgePage() {
                 e.currentTarget.style.background = "transparent";
               }}
             >
-              <Phone size={15} /> 020 8670 4098
+              <Phone size={15} /> 020 8688 3053
             </a>
           </div>
         </div>
@@ -269,14 +279,14 @@ export default function GibsonsLodgePage() {
             }}
           >
             {[
-              { icon: Bed, label: "52 Beds", sub: "41 single, 6 shared" },
+              { icon: Bed, label: "58 Beds", sub: "48 single, 5 shared" },
               {
                 icon: Clock,
                 label: "24/7 Nursing",
                 sub: "Round the clock care",
               },
               { icon: Star, label: "CQC Registered", sub: "Regulated care" },
-              { icon: MapPin, label: "Streatham", sub: "SW16, South London" },
+              { icon: MapPin, label: "South Croydon", sub: "CR2 6NN, Surrey" },
             ].map(({ icon: Icon, label, sub }) => (
               <div
                 key={label}
@@ -374,13 +384,14 @@ export default function GibsonsLodgePage() {
                   lineHeight: 1.2,
                 }}
               >
-                A real home-from-home in{" "}
-                <span style={{ color: "#6B1F8A" }}>Streatham</span>
+                A warm home in the heart of{" "}
+                <span style={{ color: "#6B1F8A" }}>South Croydon</span>
               </h2>
               {[
-                "Gibson's Lodge is a 52-bed nursing home, located in Streatham. Situated in a quiet, leafy suburban street close to the park but still conveniently located for all transport links, shops and other local facilities, we provide a real home-from-home atmosphere.",
-                "What makes Gibson's Lodge unique is our cultural diversity, with residents and staff from a range of backgrounds. Many of our long-term residents have been with us for some time, including our oldest resident, who has been with us for over 21 years.",
-                "Our home makes the most of modern care capabilities, including electronic person-centred care planning. All our bedrooms are en-suite and have a 24-hour call system.",
+                "St John's Nursing Home is a well-established 58-bed nursing home located in a quiet residential area in South Croydon, Surrey. Our aim is to provide a safe and comfortable environment for residents, with a happy and homely atmosphere.",
+                "Our care workers are committed to providing each resident with an individual care plan to suit their specific needs. We are also very committed to providing a range of activities and outings for clients to stimulate both the mind and body.",
+                "Our beautiful home from home is set on 3 floors, with a large landscaped garden. We pride ourselves on our nutritious home-cooked meals which can be enjoyed in the grand ground floor dining room, in the patio lounge or in the privacy of residents' own rooms.",
+                "Our passion at St John's is to allow our residents the choice of how to live their lives. We treat everyone as individuals and focus on their individual needs — building long-term relationships based on happiness, openness and respect.",
               ].map((p, i) => (
                 <p
                   key={i}
@@ -412,8 +423,8 @@ export default function GibsonsLodgePage() {
                 }}
               >
                 <img
-                  src="https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/Gibsons-Lodge-Nursing-Home-london.jpg"
-                  alt="Gibson's Lodge Nursing Home"
+                  src="https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/St-Johns-Nursing-Home-london.jpg"
+                  alt="St John's Nursing Home"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -430,8 +441,8 @@ export default function GibsonsLodgePage() {
                 }}
               >
                 <img
-                  src="https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/gibsons-slide2.jpg"
-                  alt="Gibson's Lodge lounge"
+                  src="https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/stjohn-slide3.jpg"
+                  alt="St John's lounge"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -448,8 +459,8 @@ export default function GibsonsLodgePage() {
                 }}
               >
                 <img
-                  src="https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/gibsons-slide3.jpg"
-                  alt="Gibson's Lodge bedroom"
+                  src="https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/prime-care-group-bedroom.jpg"
+                  alt="St John's bedroom"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -507,20 +518,19 @@ export default function GibsonsLodgePage() {
                 lineHeight: 1.2,
               }}
             >
-              Specialist care, even when others couldn&apos;t help
+              Comprehensive care for every need
             </h2>
             <p
               style={{
                 fontSize: "16px",
                 color: "#6E6E73",
                 marginTop: "16px",
-                maxWidth: "640px",
+                maxWidth: "560px",
                 margin: "16px auto 0",
               }}
             >
-              We specialise in advanced dementia and a wide range of mental
-              health needs — including residents that other services have been
-              unable to manage.
+              We provide 24-hour care on either a permanent or respite basis,
+              fully personalised to each resident's needs.
             </p>
           </div>
           <div
@@ -627,7 +637,7 @@ export default function GibsonsLodgePage() {
                   lineHeight: 1.2,
                 }}
               >
-                Built for comfort & accessibility
+                A comfortable home for everyday living
               </h3>
               <div
                 style={{
@@ -701,9 +711,9 @@ export default function GibsonsLodgePage() {
                   }}
                 >
                   {[
-                    "41 single rooms",
-                    "6 shared rooms",
-                    "31 rooms with en-suite WC",
+                    "48 single rooms",
+                    "5 shared rooms",
+                    "18 rooms with en-suite WC",
                   ].map((r) => (
                     <div
                       key={r}
@@ -771,7 +781,7 @@ export default function GibsonsLodgePage() {
                   lineHeight: 1.2,
                 }}
               >
-                A homely, engaged environment
+                Keeping minds & bodies active
               </h3>
               <p
                 style={{
@@ -781,10 +791,9 @@ export default function GibsonsLodgePage() {
                   marginBottom: "24px",
                 }}
               >
-                Our activities coordinator runs a weekly programme designed to
-                support residents with mental health conditions or dementia and
-                enhance their quality of life. Friends and family are always
-                welcome to join in.
+                Kreena is our dedicated activities coordinator, who organises a
+                varied programme of hobbies, pastimes and physical activities
+                for our residents to enjoy every day.
               </p>
               <div
                 style={{
@@ -860,8 +869,8 @@ export default function GibsonsLodgePage() {
               }}
             >
               <img
-                src="https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/Gibsons-banner.jpg"
-                alt="Gibson's Lodge dining"
+                src="https://www.primecaregroup.co.uk/wp-content/uploads/2022/01/St-Johns-Nursing-Home-london-banner-m.jpg"
+                alt="St John's dining"
                 style={{
                   width: "100%",
                   height: "100%",
@@ -909,12 +918,13 @@ export default function GibsonsLodgePage() {
                   lineHeight: 1.2,
                 }}
               >
-                Three continents on every menu at{" "}
-                <span style={{ color: "#6B1F8A" }}>Gibson&apos;s Lodge</span>
+                Good food at the heart of life at{" "}
+                <span style={{ color: "#6B1F8A" }}>St John&apos;s</span>
               </h2>
               {[
-                "Our resident chef, Christine, is able to provide delicious, freshly home-cooked meals for a range of cultures including British, Caribbean and African.",
-                "Our menus always include a choice of dishes from three continents, so whether it's jerk chicken with rice and peas, jollof rice, chickpea masala, okra soup or a traditional roast dinner and bread and butter pudding or rhubarb crumble and custard, there's always something to tempt our residents' taste buds.",
+                "All our dishes are made using fresh ingredients and we can cater for all dietary and cultural requirements. Our resident chef likes to be visible during meal times to receive feedback and ideas for future menus.",
+                "He regularly introduces recipes from all over the world, taking into consideration the nutritional and health values of the meals we serve. Our menus are aimed at being intriguing and stimulating to encourage residents' appetites.",
+                "There are always a range of alternatives on our menu and snacks are available throughout the day. We also enjoy celebrating our residents' birthdays with personalised birthday cakes.",
               ].map((p, i) => (
                 <p
                   key={i}
@@ -976,7 +986,7 @@ export default function GibsonsLodgePage() {
                 margin: 0,
               }}
             >
-              A glimpse inside Gibson&apos;s Lodge
+              A glimpse inside St John&apos;s
             </h2>
           </div>
           {/* Main image */}
@@ -1104,7 +1114,7 @@ export default function GibsonsLodgePage() {
                 lineHeight: 1.2,
               }}
             >
-              What families say about Gibson&apos;s Lodge
+              What families say about St John&apos;s
             </h2>
           </div>
           <div
@@ -1113,8 +1123,6 @@ export default function GibsonsLodgePage() {
               gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: "20px",
               marginBottom: "40px",
-              maxWidth: "640px",
-              margin: "0 auto 40px",
             }}
           >
             {testimonials.map((t, i) => (
@@ -1271,7 +1279,7 @@ export default function GibsonsLodgePage() {
                   lineHeight: 1.2,
                 }}
               >
-                Get in touch with Don McCleod
+                Get in touch with Innocent Anokute
               </h2>
               <div
                 style={{
@@ -1283,17 +1291,17 @@ export default function GibsonsLodgePage() {
                 {[
                   {
                     icon: MapPin,
-                    text: "Gibson's Hill, London SW16 3ES",
+                    text: "129 Haling Park Road, South Croydon CR2 6NN",
                   },
                   {
                     icon: Phone,
-                    text: "020 8670 4098",
-                    href: "tel:02086704098",
+                    text: "020 8688 3053",
+                    href: "tel:02086883053",
                   },
                   {
                     icon: Mail,
-                    text: "manager@gibsonslodge.co.uk",
-                    href: "mailto:manager@gibsonslodge.co.uk",
+                    text: "manager@stjohnsnursinghome.co.uk",
+                    href: "mailto:manager@stjohnsnursinghome.co.uk",
                   },
                 ].map(({ icon: Icon, text, href }) => (
                   <div
@@ -1389,8 +1397,8 @@ export default function GibsonsLodgePage() {
                   lineHeight: 1.6,
                 }}
               >
-                We&apos;d love to welcome you to Gibson&apos;s Lodge. Come and
-                meet our team and enjoy a cup of tea.
+                We&apos;d love to welcome you to St John&apos;s. Come and meet
+                our team and enjoy a cup of tea.
               </p>
               <Link
                 href="/contact-us"
