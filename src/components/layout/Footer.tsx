@@ -483,7 +483,7 @@ export default function Footer() {
             >
               Website by{" "}
               <a
-                href="#"
+                href="https://elems-portfolio.vercel.app/"
                 style={{
                   color: "rgba(255,255,255,0.7)",
                   textDecoration: "underline",
@@ -494,7 +494,7 @@ export default function Footer() {
                   (e.currentTarget.style.color = "rgba(255,255,255,0.7)")
                 }
               >
-                Promise Digital
+                Elemswebdev
               </a>
             </p>
           </div>

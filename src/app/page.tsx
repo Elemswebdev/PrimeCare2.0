@@ -1,5 +1,6 @@
 "use client";
 
+import { AICareAdvisorSection } from "@/components/ai-care-advisor-section";
 import Link from "next/link";
 import { ArrowRight, Star, Heart, Shield, Users, Phone } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -368,9 +369,13 @@ export default function HomePage() {
                 <div
                   key={stat.label}
                   className={`flex flex-col items-center py-8 px-6 text-center border-[#E8E3DC] ${
-                    i === 0 ? "border-r border-b md:border-b-0" :
-                    i === 1 ? "border-b md:border-b-0 md:border-r" :
-                    i === 2 ? "border-r" : ""
+                    i === 0
+                      ? "border-r border-b md:border-b-0"
+                      : i === 1
+                        ? "border-b md:border-b-0 md:border-r"
+                        : i === 2
+                          ? "border-r"
+                          : ""
                   }`}
                 >
                   <div className="stat-number">
@@ -666,6 +671,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <AICareAdvisorSection />
       {/* ── TESTIMONIALS ───────────────────────────────────────────── */}
       <section
         style={{
@@ -683,171 +690,171 @@ export default function HomePage() {
               textAlign: "center",
             }}
           >
-          {/* Section label */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              marginBottom: "16px",
-            }}
-          >
+            {/* Section label */}
             <div
-              style={{ width: "32px", height: "2px", background: "#45C9B8" }}
-            />
-            <span
               style={{
-                color: "#45C9B8",
-                fontSize: "13px",
-                fontWeight: 600,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-              }}
-            >
-              Testimonials
-            </span>
-            <div
-              style={{ width: "32px", height: "2px", background: "#45C9B8" }}
-            />
-          </div>
-
-          {/* Heading */}
-          <h2
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-              fontWeight: 600,
-              color: "#ffffff",
-              lineHeight: 1.2,
-              marginBottom: "48px",
-            }}
-          >
-            What our residents
-            <br />
-            and families say
-          </h2>
-
-          {/* Quote mark */}
-          <div
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "80px",
-              lineHeight: 1,
-              color: "#28B2A1",
-              opacity: 0.4,
-              marginBottom: "8px",
-            }}
-          >
-            &ldquo;
-          </div>
-
-          {/* Active testimonial */}
-          {testimonials.map((t, i) =>
-            i === activeTestimonial ? (
-              <div key={t.author}>
-                <p
-                  style={{
-                    color: "rgba(255,255,255,0.92)",
-                    fontSize: "18px",
-                    fontStyle: "italic",
-                    lineHeight: 1.8,
-                    marginBottom: "24px",
-                    padding: "0 16px",
-                  }}
-                >
-                  {t.quote}
-                </p>
-
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    gap: "4px",
-                    marginBottom: "16px",
-                  }}
-                >
-                  {[...Array(t.rating)].map((_, j) => (
-                    <Star
-                      key={`star-${j}`}
-                      size={16}
-                      style={{ color: "#28B2A1", fill: "#28B2A1" }}
-                    />
-                  ))}
-                </div>
-
-                <div
-                  style={{
-                    fontWeight: 600,
-                    color: "#ffffff",
-                    fontSize: "16px",
-                    marginBottom: "4px",
-                  }}
-                >
-                  {t.author}
-                </div>
-                <div
-                  style={{ color: "rgba(255,255,255,0.6)", fontSize: "14px" }}
-                >
-                  {t.relation} · {t.home}
-                </div>
-              </div>
-            ) : null,
-          )}
-
-          {/* Dots */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "8px",
-              marginTop: "36px",
-            }}
-          >
-            {testimonials.map((t, i) => (
-              <button
-                key={t.author}
-                onClick={() => setActiveTestimonial(i)}
-                style={{
-                  width: i === activeTestimonial ? "32px" : "8px",
-                  height: "8px",
-                  borderRadius: "999px",
-                  background:
-                    i === activeTestimonial
-                      ? "#28B2A1"
-                      : "rgba(255,255,255,0.3)",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
-                  transition: "all 300ms ease",
-                }}
-                aria-label={`Testimonial ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div style={{ marginTop: "36px" }}>
-            <Link
-              href="/testimonials"
-              style={{
-                display: "inline-flex",
+                display: "flex",
                 alignItems: "center",
-                padding: "12px 32px",
-                borderRadius: "999px",
-                border: "2px solid rgba(255,255,255,0.4)",
-                color: "rgba(255,255,255,0.9)",
-                fontSize: "15px",
-                fontWeight: 600,
-                textDecoration: "none",
-                transition: "all 250ms ease",
+                justifyContent: "center",
+                gap: "10px",
+                marginBottom: "16px",
               }}
             >
-              Read All Reviews
-            </Link>
+              <div
+                style={{ width: "32px", height: "2px", background: "#45C9B8" }}
+              />
+              <span
+                style={{
+                  color: "#45C9B8",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Testimonials
+              </span>
+              <div
+                style={{ width: "32px", height: "2px", background: "#45C9B8" }}
+              />
+            </div>
+
+            {/* Heading */}
+            <h2
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+                fontWeight: 600,
+                color: "#ffffff",
+                lineHeight: 1.2,
+                marginBottom: "48px",
+              }}
+            >
+              What our residents
+              <br />
+              and families say
+            </h2>
+
+            {/* Quote mark */}
+            <div
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "80px",
+                lineHeight: 1,
+                color: "#28B2A1",
+                opacity: 0.4,
+                marginBottom: "8px",
+              }}
+            >
+              &ldquo;
+            </div>
+
+            {/* Active testimonial */}
+            {testimonials.map((t, i) =>
+              i === activeTestimonial ? (
+                <div key={t.author}>
+                  <p
+                    style={{
+                      color: "rgba(255,255,255,0.92)",
+                      fontSize: "18px",
+                      fontStyle: "italic",
+                      lineHeight: 1.8,
+                      marginBottom: "24px",
+                      padding: "0 16px",
+                    }}
+                  >
+                    {t.quote}
+                  </p>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      gap: "4px",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    {[...Array(t.rating)].map((_, j) => (
+                      <Star
+                        key={`star-${j}`}
+                        size={16}
+                        style={{ color: "#28B2A1", fill: "#28B2A1" }}
+                      />
+                    ))}
+                  </div>
+
+                  <div
+                    style={{
+                      fontWeight: 600,
+                      color: "#ffffff",
+                      fontSize: "16px",
+                      marginBottom: "4px",
+                    }}
+                  >
+                    {t.author}
+                  </div>
+                  <div
+                    style={{ color: "rgba(255,255,255,0.6)", fontSize: "14px" }}
+                  >
+                    {t.relation} · {t.home}
+                  </div>
+                </div>
+              ) : null,
+            )}
+
+            {/* Dots */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "8px",
+                marginTop: "36px",
+              }}
+            >
+              {testimonials.map((t, i) => (
+                <button
+                  key={t.author}
+                  onClick={() => setActiveTestimonial(i)}
+                  style={{
+                    width: i === activeTestimonial ? "32px" : "8px",
+                    height: "8px",
+                    borderRadius: "999px",
+                    background:
+                      i === activeTestimonial
+                        ? "#28B2A1"
+                        : "rgba(255,255,255,0.3)",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: 0,
+                    transition: "all 300ms ease",
+                  }}
+                  aria-label={`Testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div style={{ marginTop: "36px" }}>
+              <Link
+                href="/testimonials"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  padding: "12px 32px",
+                  borderRadius: "999px",
+                  border: "2px solid rgba(255,255,255,0.4)",
+                  color: "rgba(255,255,255,0.9)",
+                  fontSize: "15px",
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  transition: "all 250ms ease",
+                }}
+              >
+                Read All Reviews
+              </Link>
+            </div>
           </div>
-        </div>
         </FadeUp>
       </section>
       {/* ── KNOWLEDGE HUB ──────────────────────────────────────────── */}
