@@ -195,41 +195,67 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO REDESIGN (FULL-BLEED) ───────────────────────────── */}
-      <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
-        {/* Full-bleed background photo — shifted right on mobile to match screenshot */}
+      <section
+        className="relative flex items-center overflow-hidden"
+        style={{
+          /* dvh (dynamic viewport height) accounts for mobile browser chrome
+             appearing/disappearing on scroll — avoids the classic iOS Safari
+             "content hidden behind address bar" problem.
+             Falls back to svh then 100vh for older browsers. */
+          minHeight: "clamp(560px, 100svh, 100dvh)",
+        }}
+      >
+        {/* Background photo */}
+        {/*
+          backgroundPosition "70% top":
+            - The horizontal 70% shifts the focal point slightly right
+              so the nurse (left) and patient (right) both stay visible
+              in the narrow portrait crop on mobile.
+            - "top" prevents heads being cut off vertically.
+            - On tablet/desktop the extra width naturally shows both
+              subjects regardless of position.
+        */}
         <div
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 hero-bg"
           style={{
             backgroundImage:
               "url(https://www.primecaregroup.co.uk/wp-content/uploads/2021/12/Prime-Care-Group-nursing-and-residential-care-hero.jpg)",
             backgroundSize: "cover",
-            backgroundPosition: "right center",
             backgroundRepeat: "no-repeat",
+            backgroundPosition: "70% top",
+          }}
+        />
+        <style>{`
+          @media (min-width: 768px) {
+            .hero-bg { background-position: center center !important; }
+          }
+        `}</style>
+
+        {/* Responsive overlay — heavier on mobile (narrower gradient
+            spread) where the text sits over less sky/background */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background:
+              "linear-gradient(105deg, rgba(0,75,69,0.82) 0%, rgba(0,75,69,0.55) 55%, rgba(0,75,69,0.15) 100%)",
           }}
         />
 
-        {/* Mobile: white card overlay — sits on top of photo */}
-        {/* Desktop: hidden (desktop uses the existing layout below) */}
-        <div className="absolute inset-0 z-10 flex items-center px-5 lg:hidden">
-          <div
-            style={{
-              background: "rgba(255, 255, 255, 0.40)",
-              // backdropFilter: "blur(6px)",
-              borderRadius: "24px",
-              padding: "36px 28px",
-              maxWidth: "380px",
-              width: "100%",
-            }}
-          >
-            {/* Headline */}
+        {/* Content */}
+        <div className="container-prime relative z-20 w-full py-20">
+          <div style={{ maxWidth: "620px" }}>
             <h1
               style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontSize: "clamp(28px, 7vw, 38px)",
+                fontSize: "clamp(28px, 5.5vw, 56px)",
                 fontWeight: 700,
-                color: "#004B45",
-                lineHeight: 1.2,
-                marginBottom: "4px",
+                color: "#ffffff",
+                lineHeight: 1.15,
+                /* Remove bottom margin entirely — let the cursive div
+                   sit flush so "with a truly / personal touch" reads
+                   as one continuous phrase with no awkward gap */
+                marginBottom: 0,
+                textShadow: "0 2px 12px rgba(0,0,0,0.18)",
               }}
             >
               Residential and
@@ -239,120 +265,86 @@ export default function HomePage() {
               with a truly
             </h1>
 
-            {/* Cursive Accent */}
+            {/* Cursive accent — flush to h1, own bottom spacing before buttons */}
             <div
               style={{
                 fontFamily: "'Dancing Script', cursive",
-                fontSize: "clamp(34px, 9vw, 48px)",
-                color: "#5B1A8A",
+                fontSize: "clamp(34px, 6.5vw, 64px)",
+                color: "#28B2A1",
+                /* Tight top so it reads as part of the h1 sentence */
+                marginTop: "2px",
                 marginBottom: "28px",
-                lineHeight: 1.2,
+                lineHeight: 1.15,
+                textShadow: "0 2px 12px rgba(0,0,0,0.18)",
               }}
             >
               personal touch
             </div>
 
-            {/* CTA Buttons */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
-              <a
+            {/* CTA Buttons — fit-content so they don't stretch full-width on mobile */}
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "12px",
+              }}
+            >
+              <Link
                 href="/about-prime-care-group"
                 style={{
-                  padding: "12px 28px",
+                  /* Tighter padding so buttons stay compact on mobile */
+                  padding: "11px 24px",
                   borderRadius: "999px",
                   fontSize: "13px",
                   fontWeight: 700,
                   color: "#ffffff",
                   background: "#0D9488",
                   textDecoration: "none",
-                  letterSpacing: "0.06em",
+                  letterSpacing: "0.04em",
+                  /* fit-content prevents button stretching to container width */
                   display: "inline-block",
+                  width: "fit-content",
+                  transition: "background 200ms ease",
+                  whiteSpace: "nowrap",
                 }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.background = "#0a7a6e")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = "#0D9488")
+                }
               >
                 ABOUT US
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/our-homes"
                 style={{
-                  padding: "12px 28px",
+                  padding: "11px 24px",
                   borderRadius: "999px",
                   fontSize: "13px",
                   fontWeight: 700,
                   color: "#ffffff",
                   background: "#5B1A8A",
                   textDecoration: "none",
-                  letterSpacing: "0.06em",
+                  letterSpacing: "0.04em",
                   display: "inline-block",
+                  width: "fit-content",
+                  transition: "background 200ms ease",
+                  whiteSpace: "nowrap",
                 }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.background = "#4A1570")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = "#5B1A8A")
+                }
               >
                 OUR HOMES
-              </a>
+              </Link>
             </div>
           </div>
         </div>
-
-        {/* Desktop layout — unchanged from original */}
-        <div className="container-prime relative z-30 w-full hidden lg:block">
-          <div className="max-w-3xl">
-            <FadeUp delay={100}>
-              <h1
-                className="text-[42px] lg:text-[48px] font-bold text-[#004B45] leading-[1.15] mb-2"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-              >
-                Residential and
-                <br />
-                nursing care
-                <br />
-                with a truly
-              </h1>
-
-              <div
-                className="text-[52px] text-[#5B1A8A] mb-10"
-                style={{ fontFamily: "'Dancing Script', cursive" }}
-              >
-                personal touch
-              </div>
-
-              <div className="flex flex-wrap gap-5">
-                <Link
-                  href="/about-prime-care-group"
-                  className="px-10 py-4 rounded-full text-[15px] font-semibold text-center min-w-[180px] transition-all duration-300"
-                  style={{
-                    background: "#0D9488",
-                    color: "#ffffff",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#0a7a6e";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "#0D9488";
-                  }}
-                >
-                  ABOUT US
-                </Link>
-                <Link
-                  href="/our-homes"
-                  className="px-10 py-4 rounded-full text-[15px] font-semibold text-center min-w-[180px] transition-all duration-300"
-                  style={{
-                    background: "#5B1A8A",
-                    color: "#ffffff",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#4A1570";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "#5B1A8A";
-                  }}
-                >
-                  OUR HOMES
-                </Link>
-              </div>
-            </FadeUp>
-          </div>
-        </div>
       </section>
-
       {/* ── STATS BAR ──────────────────────────────────────────────── */}
       <section
         style={{ background: "#ffffff", borderBottom: "1px solid #E8E3DC" }}
