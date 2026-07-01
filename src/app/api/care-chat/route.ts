@@ -29,6 +29,31 @@ interface ChatMessage {
   content: string;
 }
 
+function buildFallbackReply(messages: ChatMessage[]) {
+  const latestUserMessage =
+    [...messages].reverse().find((message) => message.role === "user")
+      ?.content ?? "";
+  const query = latestUserMessage.toLowerCase();
+
+  if (
+    query.includes("cost") ||
+    query.includes("price") ||
+    query.includes("pay")
+  ) {
+    return "Costs can vary depending on the level of care, room type and funding route. The best next step is to speak to our team directly so we can guide you through the options.";
+  }
+
+  if (query.includes("home") || query.includes("which")) {
+    return "We offer residential and nursing care across St John's and Gibson's Lodge. The best next step is to contact our team directly so we can help you find the right home for your family.";
+  }
+
+  if (query.includes("dementia")) {
+    return "We can talk you through the support available for dementia care, and our team can help you understand which setting would feel most comfortable and suitable.";
+  }
+
+  return "I’m here to help with questions about care options, home suitability and next steps. If you’d like a more personal conversation, please contact our team directly.";
+}
+
 function isValidMessages(value: unknown): value is ChatMessage[] {
   if (!Array.isArray(value)) return false;
   return value.every(
@@ -42,13 +67,6 @@ function isValidMessages(value: unknown): value is ChatMessage[] {
 }
 
 export async function POST(request: NextRequest) {
-  if (!process.env.OPENAI_API_KEY?.trim()) {
-    return NextResponse.json(
-      { error: "Configuration error", message: "OPENAI_API_KEY is not set" },
-      { status: 500 },
-    );
-  }
-
   let body: unknown;
   try {
     body = await request.json();
@@ -79,6 +97,14 @@ export async function POST(request: NextRequest) {
 
   const { messages } = body as { messages: ChatMessage[] };
 
+  if (!process.env.OPENAI_API_KEY?.trim()) {
+    console.warn("[care-chat] OPENAI_API_KEY is not set, using fallback reply");
+    return NextResponse.json(
+      { reply: buildFallbackReply(messages), fallback: true },
+      { status: 200 },
+    );
+  }
+
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
   try {
@@ -94,34 +120,24 @@ export async function POST(request: NextRequest) {
     const reply = completion.choices[0]?.message?.content ?? "";
 
     if (!reply) {
+      console.warn(
+        "[care-chat] OpenAI returned an empty response, using fallback reply",
+      );
       return NextResponse.json(
-        {
-          error: "OpenAI API error",
-          message: "Model returned an empty response",
-        },
-        { status: 502 },
+        { reply: buildFallbackReply(messages), fallback: true },
+        { status: 200 },
       );
     }
 
     return NextResponse.json({ reply }, { status: 200 });
   } catch (error) {
-    if (error instanceof OpenAI.APIError) {
-      const status =
-        error.status && error.status >= 400 && error.status < 600
-          ? error.status
-          : 502;
-      return NextResponse.json(
-        { error: "OpenAI API error", message: error.message },
-        { status },
-      );
-    }
     console.error("[care-chat] Unexpected error:", error);
     return NextResponse.json(
       {
-        error: "Internal server error",
-        message: "Failed to process chat request",
+        reply: buildFallbackReply(messages),
+        fallback: true,
       },
-      { status: 500 },
+      { status: 200 },
     );
   }
 }

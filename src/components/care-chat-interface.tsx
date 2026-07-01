@@ -58,12 +58,20 @@ export function CareChatInterface({ compact = false }: { compact?: boolean }) {
         body: JSON.stringify({ messages: updated }),
       });
 
-      if (!response.ok) throw new Error("Request failed");
+      const data = await response.json().catch(() => null);
 
-      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data?.message ?? "Request failed");
+      }
+
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: data.reply },
+        {
+          role: "assistant",
+          content:
+            data?.reply ||
+            "Sorry, I’m having trouble responding right now. Please try again in a moment.",
+        },
       ]);
     } catch (error) {
       console.error("[care-chat] Error:", error);
